@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<h1 style="border-width:100%; text-align:center; font-size:4em; background-color:#7B68EE">Employee Information</h1>
+<hr>
+<div style="background-color:#FFE4E1">
+<table class="table-bordered" border = "2" width="70%" style="text-align:center; margin-left:auto; margin-right:auto">
+    <thead>
+    <th style="text-align:center; font-size:2em">Emp No</th>
+    <th style="text-align:center; font-size:2em">Name</th>
+    <th style="text-align:center; font-size:2em">Salary</th>
+    <th style="text-align:center; font-size:2em">Address</th>
+    <th style="text-align:center; font-size:2em">Email</th>
+    </thead>
+    {% if emp_list %}
+    {% for records in emp_list %}
+    <tr>
+        <td style="font-size:1.5em">{{records.eno}}</td>
+        <td style="font-size:1.5em">{{records.ename}}</td>
+        <td style="font-size:1.5em">{{records.esal}}</td>
+        <td style="font-size:1.5em">{{records.eaddress}}</td>
+        <td style="font-size:1.5em">{{records.email}}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    {% endif %}
+</table>
+</div>
+</body>
+</html>
