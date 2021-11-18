@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <th>Emp No</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>Address</th>
+    <th>Email</th>
+    </thead>
+
+    {% if emp_list %}
+    {% for records in emp_list %}
+    <tr>
+        <td>{{records.eno}}</td>
+        <td>{{records.ename}}</td>
+        <td>{{records.esal}}</td>
+        <td>{{records.eaddress}}</td>
+        <td>{{records.eemail}}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+</body>
+</html>
