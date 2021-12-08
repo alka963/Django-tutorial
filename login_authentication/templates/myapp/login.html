@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center; margin: 25px; color: blue;">
+    <h1 align="center" style="color:black;">Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        <!--{% for f in form %}
+         {{f.label_tag}} {{f}} {{f.error|striptags}}<br><br>
+        {% endfor %}-->
+        {{form.as_p}}
+        <input type="submit" value="Login">
+        <a href="/">Register</a>
+    </form>
+</div>
+</body>
+</html>
