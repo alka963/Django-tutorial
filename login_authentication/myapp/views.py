@@ -1,5 +1,10 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import UserRegisterForm
+from .models import Employee
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from .forms import Employeeform
+
+
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
@@ -23,8 +28,8 @@ def Login(request):
             username = emp_frm.cleaned_data['username']
             password = emp_frm.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            global dict
-            dict = {'username':username, 'password':password}
+            #global dict
+            #dict = {'username':username, 'password':password}
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect('/home/')
@@ -32,5 +37,27 @@ def Login(request):
         emp_frm = AuthenticationForm()
     return render(request, 'myapp/login.html', {'form':emp_frm})
 
-def home(request):
-    return render(request, 'myapp/home.html', dict)
+#def home(request):
+ #   return render(request, 'myapp/home.html', dict)
+
+class Home(ListView):
+    model = Employee
+    template_name = 'myapp/home.html'
+class AddRecord(CreateView):
+    model = Employee
+    form_class = Employeeform
+    template_name = 'myapp/add.html'
+    success_url = '/home'
+
+class UpdateRecord(UpdateView):
+    model = Employee
+    form_class = Employeeform
+    pk_url_kwarg = 'pk'
+    template_name = 'myapp/update.html'
+    success_url = '/home'
+
+class DeleteRecord(DeleteView):
+    model = Employee
+    pk_url_kwarg = 'pk'
+    template_name = 'myapp/delete.html'
+    success_url = '/home'
